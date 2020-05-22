@@ -1,1 +1,2 @@
-**/aws-exports.js
+src/serviceWorker.ts
+src/aws-exports.js

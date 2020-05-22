@@ -1,9 +1,11 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import SignIn from '../containers/SignIn';
-import ForgotPassword from '../containers/ForgotPassword';
-import ForgotPasswordReset from '../containers/ForgotPasswordReset';
+import SignIn from '../containers/auth/SignIn';
+import SignUp from '../containers/auth/SignUp';
+import ConfirmSignUp from '../containers/auth/ConfirmSignUp';
+import ForgotPassword from '../containers/auth/ForgotPassword';
+import ForgotPasswordReset from '../containers/auth/ForgotPasswordReset';
 
 type Props = {
     authState: string | null;
@@ -12,7 +14,9 @@ type Props = {
 const Login: React.FC<Props> = ({ authState }) => {
     const contents = (
         <React.Fragment>
-            <SignIn />
+            <SignIn enableSignUp={true} />
+            <SignUp />
+            <ConfirmSignUp />
             <ForgotPassword />
             <ForgotPasswordReset />
         </React.Fragment>

@@ -3952,10 +3952,10 @@ amazon-cognito-identity-js@^4.2.4:
     crypto-js "^3.3.0"
     js-cookie "^2.1.4"
 
-amplify-auth-redux-module@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/amplify-auth-redux-module/-/amplify-auth-redux-module-0.0.3.tgz#b76cc38c67cc01006efcec53b5e8d6a7f3caeb7e"
-  integrity sha512-QxeT2MBBshWj51Ox0ASoWhLDaPZPXmyWjDwBXK+IdBh1LdTB6fwpifuWZthKnsTWqxmfwsVtJTBjlNWdtIGoqg==
+amplify-auth-redux-module@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/amplify-auth-redux-module/-/amplify-auth-redux-module-0.0.5.tgz#11eab0c97f919577e94c9a3be2b6fd7e9c7193ea"
+  integrity sha512-PhUvSmUyp4aVWEnx7KgpW3vq6xlYax6yNh1wSR7wd04a3lQQO6q7xLy4oEl2XqFnp+PhyMz1Sf5qS+Xua3j6xw==
 
 ansi-colors@^3.0.0:
   version "3.2.4"
@@ -9180,10 +9180,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-material-ui-amplify-auth@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/material-ui-amplify-auth/-/material-ui-amplify-auth-0.0.5.tgz#1398345105deb71ac4f7730da18b250852c4671e"
-  integrity sha512-bVee++gdDftcEarDJ0iv6hKrU+h9/xxj9BQxILD1ocXDlhZ/ezCjc0vkzt/Q2czBq0xeFbFWKs80Gr7+/oijPA==
+material-ui-amplify-auth@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/material-ui-amplify-auth/-/material-ui-amplify-auth-0.0.9.tgz#4993d3888e16ba7185265101464add638a872c31"
+  integrity sha512-TVHqfqNItNcyEp85am9rsZU60E4t+N8iuN6dW5ccvIHSjs6/14jmuivjgXMMnZVSUpwSuvNRykahWUnQKkygPA==
 
 material-ui-basic-parts@^0.0.16:
   version "0.0.16"

@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-outputwikifrontend-dev-70116-authRole",
+            "UnauthRoleArn": "arn:aws:iam::539741201439:role/amplify-outputwikifrontend-dev-70116-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::539741201439:role/amplify-outputwikifrontend-dev-70116-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-outputwikifrontend-dev-70116-deployment",
+            "UnauthRoleName": "amplify-outputwikifrontend-dev-70116-unauthRole",
+            "StackName": "amplify-outputwikifrontend-dev-70116",
+            "StackId": "arn:aws:cloudformation:us-east-1:539741201439:stack/amplify-outputwikifrontend-dev-70116/70c8fd70-9ae5-11ea-8789-1246411399d1",
+            "AmplifyAppId": "d3ivkk88l93in0"
+        },
+        "categories": {
+            "auth": {
+                "outputwikifrontend2d6c9c74": {}
+            }
+        }
+    }
+}
