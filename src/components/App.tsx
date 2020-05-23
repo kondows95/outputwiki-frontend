@@ -3,8 +3,17 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline, Box } from '@material-ui/core';
 import theme from '../theme';
 import Login from '../containers/Login';
+import Header from '../containers/Header';
 import { CognitoUser } from '@aws-amplify/auth';
 import { Route, BrowserRouter } from 'react-router-dom';
+
+export type StateProps = {
+    user: CognitoUser | null;
+};
+
+export type DispatchProps = {
+    fetchAuthedUser: () => void;
+};
 
 type Props = {
     user: CognitoUser | null;
@@ -27,7 +36,7 @@ const App: React.FC<Props> = (props) => {
                 exact
                 path="/"
                 render={(): React.ReactElement => {
-                    return <div>test</div>;
+                    return <Header />;
                 }}
             />
         </Box>
