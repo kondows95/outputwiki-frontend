@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, ListSubheader, ListItem, ListItemText, Divider, Box } from '@material-ui/core';
+import { List, ListSubheader, ListItem, ListItemText, Box, Grid } from '@material-ui/core';
+import { NavigateNext as NextIcon } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,62 +9,97 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: theme.palette.primary.main,
     },
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
 }));
 
 export type StateProps = {
     open: boolean;
-    books: string[];
-    documents: string[];
-    chapters: string[];
+    menuType: MenuType;
+    docMap: Map<string, Documentation[]>;
+    chapters: Chapter[];
 };
 
 export type DispatchProps = {
-    toggleMenu: () => void;
+    toggleOpen: () => void;
+    fetchDocumentations: () => void;
+    fetchChapters: (id: string) => void;
 };
 
 const MenuContents: React.FC<StateProps & DispatchProps> = (props) => {
     const classes = useStyles();
-    const map = new Map<string, string[]>();
-    map.set('Books', props.books);
-    map.set('Documents', props.documents);
+    React.useEffect(() => {
+        props.fetchDocumentations();
+        console.log('###fetchDocumentations', props.docMap);
+    }, []);
 
-    const list: React.ReactElement[] = [];
-    map.forEach((items: string[], key: string) => {
-        list.push(
-            <List
-                key={key}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                subheader={
-                    <ListSubheader component="div" id="nested-list-subheader">
-                        {key}
-                    </ListSubheader>
-                }
-            >
-                <Divider />
-                <Box display="flex" flexDirection="column">
-                    {items.map((title: string, i: number) => {
-                        return (
-                            <React.Fragment key={i}>
-                                <Link to="/customers" className={classes.link} onClick={props.toggleMenu}>
-                                    <ListItem button className="icon">
-                                        <ListItemText>{title}</ListItemText>
-                                    </ListItem>
-                                </Link>
-                                <Divider />
-                            </React.Fragment>
-                        );
-                    })}
-                </Box>
-            </List>
+    const handleClickLink = (id: string): void => {
+        if (props.menuType === 'default') {
+            props.fetchChapters(id);
+        }
+        props.toggleOpen();
+    };
+
+    const getItem = (label: string, id: string): React.ReactElement => {
+        return (
+            <Grid xs={12} sm={4} md={3} item key={id}>
+                <Link to="/" className={classes.link} onClick={(): void => handleClickLink(id)}>
+                    <ListItem button={true}>
+                        <NextIcon />
+                        <ListItemText>{label}</ListItemText>
+                    </ListItem>
+                </Link>
+            </Grid>
         );
-    });
-    return <React.Fragment>{list}</React.Fragment>;
+    };
+
+    const getChapters = (): React.ReactElement[] => {
+        const list: React.ReactElement[] = [];
+        for (const row of props.chapters) {
+            list.push(
+                <List key={row.ID} component="nav">
+                    <Box display="flex" flexDirection="column">
+                        <Grid container>{getItem(row.ID, row.ID)}</Grid>
+                    </Box>
+                </List>
+            );
+        }
+        return list;
+    };
+
+    const getDocs = (): React.ReactElement[] => {
+        const list: React.ReactElement[] = [];
+        props.docMap.forEach((rows: Documentation[], key: string) => {
+            list.push(
+                <List
+                    key={key}
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    subheader={
+                        <ListSubheader component="div" id="nested-list-subheader">
+                            {key}
+                        </ListSubheader>
+                    }
+                >
+                    <Box display="flex" flexDirection="column">
+                        <Grid container>
+                            {rows.map((row: Documentation) => {
+                                return getItem(row.ID, row.ID);
+                            })}
+                        </Grid>
+                    </Box>
+                </List>
+            );
+        });
+        return list;
+    };
+
+    const getContents = (): React.ReactElement[] => {
+        if (props.menuType === 'chapters') {
+            return getChapters();
+        }
+        return getDocs();
+    };
+
+    return <React.Fragment>{getContents()}</React.Fragment>;
 };
 
 export default MenuContents;

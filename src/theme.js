@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import secondary from '@material-ui/core/colors/orange';
 import primary from '@material-ui/core/colors/blueGrey';
 
-//const theme = createMuiTheme();
+const theme = createMuiTheme();
 export default createMuiTheme({
     breakpoints: {
         values: {
@@ -40,5 +40,8 @@ export default createMuiTheme({
         MuiSwitch: {
             color: 'primary',
         },
+    },
+    zIndex: {
+        appBar: theme.zIndex.drawer + 1,
     },
 });

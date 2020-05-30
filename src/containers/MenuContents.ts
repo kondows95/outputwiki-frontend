@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
 import MenuContents, { StateProps, DispatchProps } from '../components/MenuContents';
-import { toggleMenu } from '../modules/menu';
+import { toggleOpen } from '../modules/menu';
+import { fetchDocumentations } from '../modules/documentation';
+import { fetchChapters } from '../modules/chapter';
 
 export const mapStateToProps = (state: AppState): StateProps => ({
     open: state.menu.open,
-    books: state.menu.books,
-    documents: state.menu.documents,
-    chapters: state.menu.chapters,
+    menuType: state.menu.menuType,
+    docMap: state.documentation.map,
+    chapters: state.chapter.rows,
 });
 
 export const mapDispatchToProps = (dispatch: AppDispatch): DispatchProps => ({
-    toggleMenu: (): Action => dispatch(toggleMenu()),
+    toggleOpen: (): Action => dispatch(toggleOpen()),
+    fetchDocumentations: (): Promise<void> => dispatch(fetchDocumentations()),
+    fetchChapters: (id: string): Promise<void> => dispatch(fetchChapters(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuContents);

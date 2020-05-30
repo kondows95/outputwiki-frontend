@@ -8,16 +8,12 @@ export type Action = {
 
 export type MenuState = {
     open: boolean;
-    books: string[];
-    documents: string[];
-    chapters: string[];
+    menuType: MenuType;
 };
 
 export const initialState: MenuState = {
     open: false,
-    books: ['book1', 'book2'],
-    documents: ['document1', 'document2'],
-    chapters: ['chapter1', 'chapter2'],
+    menuType: 'default',
 };
 
 //=============================================================================
@@ -25,10 +21,15 @@ export const initialState: MenuState = {
 //=============================================================================
 export default (state: MenuState = initialState, action: AnyAction): MenuState => {
     switch (action.type) {
-        case 'MENU_TOGGLE_MENU':
+        case 'MENU_TOGGLE_OPEN':
             return {
                 ...state,
                 open: !state.open,
+            };
+        case 'MENU_SET_MENU_TYPE':
+            return {
+                ...state,
+                menuType: action.payload,
             };
         default:
             return state;
@@ -38,6 +39,11 @@ export default (state: MenuState = initialState, action: AnyAction): MenuState =
 //=============================================================================
 //Actions
 //=============================================================================
-export const toggleMenu = (): Action => ({
-    type: 'MENU_TOGGLE_MENU',
+export const toggleOpen = (): Action => ({
+    type: 'MENU_TOGGLE_OPEN',
+});
+
+export const setMenuType = (menuType: MenuType): Action => ({
+    type: 'MENU_SET_MENU_TYPE',
+    payload: menuType,
 });

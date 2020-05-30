@@ -17,6 +17,7 @@
     "amplify-auth-redux-module": "^0.0.5",
     "aws-amplify": "^3.0.11",
     "aws-sdk": "^2.680.0",
+    "dayjs": "^1.8.27",
     "material-ui-amplify-auth": "^0.0.9",
     "material-ui-basic-parts": "^0.0.16",
     "react": "^16.13.1",
