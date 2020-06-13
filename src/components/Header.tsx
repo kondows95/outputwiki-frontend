@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Button, Drawer } from '@material-ui/core';
 import { ExpandMore as DownIcon, ExpandLess as UpIcon } from '@material-ui/icons';
 import UserMenu from '../containers/UserMenu';
-import MenuContents from '../containers/MenuContents';
+import MenuList from '../containers/MenuList';
 import { ToolbarSpacer } from 'material-ui-basic-parts';
 
 export type StateProps = {
@@ -14,7 +14,6 @@ export type StateProps = {
 export type DispatchProps = {
     toggleOpen: () => void;
     setMenuType: (menuType: MenuType) => void;
-    fetchChapters: (documentationID: string) => void;
 };
 
 const Header: React.FC<StateProps & DispatchProps> = (props) => {
@@ -62,7 +61,7 @@ const Header: React.FC<StateProps & DispatchProps> = (props) => {
                 }}
             >
                 <ToolbarSpacer />
-                <MenuContents />
+                <MenuList />
             </Drawer>
         </React.Fragment>
     );

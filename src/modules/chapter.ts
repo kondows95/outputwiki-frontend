@@ -7,6 +7,7 @@ export const initialChapter: Chapter = {
     DocumentationID: '',
     Title: '',
     Tags: [],
+    NumArticles: 0,
     ItemType: '',
     CreatedAt: '',
     UpdatedAt: '',
@@ -77,18 +78,18 @@ export const setError = (err: any): Action => ({
 //=============================================================================
 //Async Operations
 //=============================================================================
-const isAlreadLoaded = (documentationID: string, state: ChapterState): boolean => {
+const isAlreadLoaded = (docID: string, state: ChapterState): boolean => {
     if (state.rows.length > 0) {
-        if (state.rows[0].DocumentationID === documentationID) {
+        if (state.rows[0].DocumentationID === docID) {
             return true;
         }
     }
     return false;
 };
 
-export const fetchChapters = (documentationID: string) => {
+export const fetchChapters = (docID: string) => {
     return async (dispatch: AppDispatch, getState: () => AppState): Promise<void> => {
-        if (isAlreadLoaded(documentationID, getState().chapter)) {
+        if (isAlreadLoaded(docID, getState().chapter)) {
             console.log('alreadLoaded');
             return;
         }
@@ -100,10 +101,11 @@ export const fetchChapters = (documentationID: string) => {
             const dummyData: Chapter[] = [];
             for (let i = 0; i < 20; i++) {
                 dummyData.push({
-                    ID: documentationID + '_chapter_' + i,
-                    DocumentationID: documentationID,
+                    ID: docID + '_chapter_' + i,
+                    DocumentationID: docID,
                     Title: 'ChapterTitle' + i,
                     Tags: ['tag1', 'tag2s'],
+                    NumArticles: i % 10,
                     ItemType: 'Chapter',
                     CreatedAt: '2019-11-22T02:37:25Z',
                     UpdatedAt: '2019-11-22T02:37:25Z',

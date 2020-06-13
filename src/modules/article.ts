@@ -102,16 +102,16 @@ export const setCurrentPage = (value: number): Action => ({
 //=============================================================================
 //Async Operations
 //=============================================================================
-export const fetchArticles = () => {
+export const fetchArticles = (id: string) => {
     return async (dispatch: AppDispatch): Promise<void> => {
         //const sess = await Auth.currentSession();
         dispatch(beginLoading());
         try {
-            await new Promise((r) => setTimeout(r, 3000));
+            //await new Promise((r) => setTimeout(r, 3000));
             const dummyData: Article[] = [];
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 20; i++) {
                 dummyData.push({
-                    ID: 'ArticleID' + i,
+                    ID: id + 'ArticleID' + i,
                     Title: 'ArticleTitle' + i,
                     DocumentationID: 'dummy-DocumentationID',
                     ChapterID: 'dummy-ChapterID',
@@ -121,6 +121,7 @@ export const fetchArticles = () => {
                     UpdatedAt: '2019-11-22T02:37:25Z',
                 });
             }
+            console.log('module/fetchArticles', dummyData);
             dispatch(fetchRowsSuccess(dummyData));
         } catch (err) {
             console.log('err', err);

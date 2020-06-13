@@ -7,6 +7,7 @@ declare global {
         menu: MenuState;
         documentation: DocumentationState;
         chapter: ChapterState;
+        article: ArticleState;
     };
 
     type AppDispatch = ThunkDispatch<AppState, undefined, AnyAction>;
@@ -22,6 +23,7 @@ declare global {
         DocumentationID: string;
         Title: string;
         Tags: string[]; //Master Data of other Tags
+        NumArticles: number;
         ItemType: string;
         CreatedAt: string;
         UpdatedAt: string;
@@ -34,6 +36,7 @@ declare global {
         Description: string;
         DocumentationType: string; //document|book
         Author?: string;
+        NumArticles: number;
         ItemType: string;
         CreatedAt: string;
         UpdatedAt: string;

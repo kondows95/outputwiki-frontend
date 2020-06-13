@@ -6,7 +6,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import theme from '../theme';
 import Login from '../containers/Login';
 import Header from '../containers/Header';
-//import ListTable from '../containers/ListTable';
+import ArticleList from '../containers/ArticleList';
 
 export type StateProps = {
     user: CognitoUser | null;
@@ -36,6 +36,7 @@ const App: React.FC<StateProps & DispatchProps> = (props) => {
                     return (
                         <React.Fragment>
                             <Header />
+                            <ArticleList />
                         </React.Fragment>
                     );
                 }}
